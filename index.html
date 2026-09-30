@@ -71,18 +71,29 @@ section{margin-bottom:40px}h2{font-size:1.7rem;margin:0 0 10px;line-height:1.15}
 .foot div{display:flex;flex-direction:column;gap:6px}.foot a,.foot span{color:var(--mute);text-decoration:none;font-size:.95rem}.foot a:hover{color:var(--ink);text-decoration:underline}
 #list,.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;align-items:start}
 .sit:focus-visible,nav a:focus-visible,.foot a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.group{background:color-mix(in srgb,var(--g) 13%,var(--card));border-radius:20px;padding:12px;margin-bottom:12px}
+.group>b{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:600;font-size:1.05rem;margin-bottom:10px}
+.gi{width:34px;height:34px;border-radius:11px;background:var(--g);display:grid;place-items:center;font-size:1.15rem}
+.g-age{--g:#D9413F;--gt:#fff}.g-place{--g:#0F8A76;--gt:#fff}.g-time{--g:#2563EB;--gt:#fff}.g-mat{--g:#F5A300;--gt:#14213D}.g-par{--g:#7C3AED;--gt:#fff}
+.group .chip{min-height:46px;font-size:1rem;padding:8px 16px;background:var(--card);border:2px solid color-mix(in srgb,var(--g) 40%,transparent);transition:background .15s,transform .15s}
+.group .chip[aria-pressed="true"]{background:var(--g);color:var(--gt);border-color:var(--g);font-weight:600;transform:scale(1.04)}
+.g-age .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.g-age .chip{font-size:1.2rem;padding:10px 0;text-align:center;border-radius:16px}
+.panel .gorow{position:sticky;bottom:calc(env(safe-area-inset-bottom,0px) + 8px);background:var(--card);border:2px solid var(--line);border-radius:18px;padding:10px 12px;box-shadow:0 6px 18px rgba(20,33,61,.2)}
+.panel .gorow .btn{padding:12px 18px}
+@media (prefers-reduced-motion:reduce){.group .chip{transition:none}.group .chip[aria-pressed="true"]{transform:none}}
 </style>
 </head>
 <body>
 <header class="top"><a class="logo" href="#top">🧩 Ne Yapsak?</a><nav><a href="#bul">Etkinlik Bul</a><a href="#yas">Yaşa Göre</a><a href="#durum">Durumlar</a><a href="#yazdir">Yazdırılabilir</a><a href="#hakkinda">Hakkında</a></nav><button class="btn" id="rand2" type="button">Şaşırt beni ✨</button></header>
 <main id="top">
 <section class="hero"><p class="kick">Basit fikirler. Büyük anlar.</p><h1>Birlikte yapacak<br>güzel bir şey bul</h1><p class="sub">Çocuğunuzun yaşını ve birkaç ayrıntıyı seçin, hemen başlayabileceğiniz bir etkinlik alın.</p><div class="badges"><span>✔ Hazırlıksız fikirler</span><span>♡ Ebeveyn dostu</span><span>✦ 0-10 yaş</span></div><div class="scene" aria-hidden="true"><i>🚗</i><i>🧸</i><i>🎈</i><i>🧩</i><i>🍃</i></div></section>
-<section id="bul" class="panel"><h2>Bugün ne işe yarar?</h2>
-<div class="group"><b>Yaş</b><div class="chips" data-k="age"></div></div>
-<div class="group"><b>Nerede?</b><div class="chips" data-k="place"></div></div>
-<div class="group"><b>Ne kadar süre var?</b><div class="chips" data-k="time"></div></div>
-<div class="group"><b>Elinizde ne var?</b><div class="chips" data-k="mat"></div></div>
-<div class="group"><b>Siz nasılsınız?</b><div class="chips" data-k="par"></div></div>
+<section id="bul" class="panel"><h2>Bugün ne yapalım?</h2><p class="sub" style="margin-bottom:12px">Hepsi isteğe bağlı: sadece bildiklerinizi seçin.</p>
+<div class="group g-age"><b><span class="gi">🎂</span>Kaç yaşında?</b><div class="chips" data-k="age"></div></div>
+<div class="group g-place"><b><span class="gi">📍</span>Nerede oynayacaksınız?</b><div class="chips" data-k="place"></div></div>
+<div class="group g-time"><b><span class="gi">⏱️</span>Ne kadar vaktiniz var?</b><div class="chips" data-k="time"></div></div>
+<div class="group g-mat"><b><span class="gi">🧺</span>Elinizde ne var?</b><div class="chips" data-k="mat"></div></div>
+<div class="group g-par"><b><span class="gi">👨‍👩‍👧</span>Kiminle oynanacak?</b><div class="chips" data-k="par"></div></div>
 <div class="gorow"><span id="cnt2" class="count"></span><button class="btn" id="show" type="button">Etkinlikleri göster ↓</button></div></section>
 <section id="yas"><p class="kick">Elle seçilmiş fikirler</p><h2 id="ttl">Tüm yaşlar için</h2>
 <div class="bar"><span class="count" id="count" aria-live="polite"></span><span><button class="btn ghost" id="reset" type="button">Temizle</button> <button class="btn" id="rand" type="button">Şaşırt beni</button></span></div>
@@ -121,8 +132,9 @@ var A=[
 var BC=["#FFE3D6","#DDF0E6","#DDEBFA","#FFF0BF","#F0E1F7"];
 var EM={"Bant Yolu":"🚗","Ben Görüyorum":"👀","Çorap Eşleştirme Yarışı":"🧦","Kağıt Uçak Yarışı":"✈️","Yüzer mi, Batar mı?":"🫧","Hikaye Zinciri":"📖","Battaniye Kalesi":"🏰","Doğa Hazine Avı":"🍃","Hazine Sepeti":"🧺","Teşekkür Kartı":"💌"};
 A.forEach(function(a){a.e=EM[a.t]||"⭐"});
+var EMJ={age:{0:"🍼"},place:{evde:"🏠",disarida:"🌳",yolda:"🚗",masada:"🪑"},time:{"5":"⚡","15":"⏱️","45":"⏳"},mat:{hic:"✋",kagit:"📄",ev:"🧺",hobi:"🎨"},par:{b:"👨‍👩‍👧",y:"🧸"}};
 var sel={},ageLbl={};
-function chips(){document.querySelectorAll(".chips").forEach(function(c){var k=c.dataset.k;F[k].forEach(function(o){var b=document.createElement("button");b.className="chip";b.type="button";b.textContent=o[0];b.setAttribute("aria-pressed","false");b.onclick=function(){sel[k]=(sel[k]===o[1])?undefined:o[1];c.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed","false")});if(sel[k]!==undefined)b.setAttribute("aria-pressed","true");render()};c.appendChild(b)})})}
+function chips(){document.querySelectorAll(".chips").forEach(function(c){var k=c.dataset.k;F[k].forEach(function(o){var b=document.createElement("button");b.className="chip";b.type="button";b.textContent=(EMJ[k]&&EMJ[k][o[1]]?EMJ[k][o[1]]+" ":"")+o[0];b.setAttribute("aria-pressed","false");b.onclick=function(){sel[k]=(sel[k]===o[1])?undefined:o[1];c.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed","false")});if(sel[k]!==undefined)b.setAttribute("aria-pressed","true");render()};c.appendChild(b)})})}
 function match(a){
  if(sel.age!==undefined&&!(sel.age>=a.a[0]&&sel.age<=a.a[1]))return false;
  if(sel.place&&a.p.indexOf(sel.place)<0)return false;
