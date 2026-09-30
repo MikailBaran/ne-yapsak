@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14213D"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
+<title>Ne Yapsak? – Çocukla yapılacak etkinlikler</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EAF3FA;--card:#fff;--ink:#14213D;--mute:#506080;--acc:#FFB703;--acc-ink:#14213D;--on:#14213D;--on-ink:#fff;--line:#C9D9E8;--ok:#1E8E7E;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A2E;--card:#182640;--ink:#EEF3FA;--mute:#A4B4CC;--line:#2C3E5E;--on:#FFB703;--on-ink:#14213D}}
+:root[data-theme="dark"]{--bg:#0F1A2E;--card:#182640;--ink:#EEF3FA;--mute:#A4B4CC;--line:#2C3E5E;--on:#FFB703;--on-ink:#14213D}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Fredoka',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:2.4rem;line-height:1.05;margin:8px 0 6px;font-weight:600}
+.sub{color:var(--mute);margin:0 0 20px}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px}
+.group{margin-bottom:14px}
+.group>b{display:block;font-weight:500;color:var(--mute);margin-bottom:6px;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--on);color:var(--on-ink);border-color:var(--on)}
+.chip:focus-visible,.btn:focus-visible,summary:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 12px;flex-wrap:wrap}
+.count{font-weight:600;font-size:1.15rem}
+.btn{font:inherit;font-weight:600;background:var(--acc);color:var(--acc-ink);border:0;border-radius:14px;padding:10px 18px;cursor:pointer}
+.btn.ghost{background:transparent;border:2px solid var(--line);color:var(--ink);font-weight:500}
+.act{background:var(--card);border:2px solid var(--line);border-radius:18px;margin-bottom:12px;overflow:hidden}
+.act.hl{border-color:var(--acc);border-width:3px}
+summary{list-style:none;cursor:pointer;padding:14px 16px}
+summary::-webkit-details-marker{display:none}
+.t{font-size:1.2rem;font-weight:600;margin:0 0 6px}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.meta span{font-size:.85rem;background:var(--bg);border-radius:8px;padding:2px 10px;color:var(--mute)}
+.body{padding:0 16px 16px;border-top:2px dashed var(--line)}
+.body p{margin:12px 0 0}
+.body b{color:var(--ok)}
+.say{background:var(--bg);border-radius:12px;padding:10px 12px}
+.warn b{color:#C2410C}
+.empty{text-align:center;padding:32px 16px;color:var(--mute)}
+footer{margin-top:28px;color:var(--mute);font-size:.85rem;text-align:center}
+@media (prefers-reduced-motion:no-preference){.act{transition:border-color .15s}}
+main{max-width:980px}
+h1{font-size:clamp(2.2rem,6vw,3.4rem)}
+#list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;align-items:start}
+.act{margin:0;border-radius:22px}
+summary{padding:0}
+.band{height:120px;display:flex;align-items:center;justify-content:center;font-size:3.6rem}
+.pad{padding:12px 14px 14px}
+.meta span{border-radius:999px;padding:2px 10px}
+.meta .c0{background:#FFE0DC;color:#8A2D1F}.meta .c1{background:#D9EAFB;color:#1A4A7A}.meta .c2{background:#D8F1E4;color:#14604A}.meta .c3{background:#FFF0BF;color:#6B4E00}.meta .c4{background:#EBDDF7;color:#56318A}
+.empty{grid-column:1/-1}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;padding:10px 16px;background:var(--bg);border-bottom:2px solid var(--line)}
+.logo{font-weight:600;font-size:1.25rem;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:16px;flex-wrap:wrap}nav a{color:var(--ink);text-decoration:none;font-weight:500}nav a:hover{text-decoration:underline}
+section{margin-bottom:40px}h2{font-size:1.7rem;margin:0 0 10px;line-height:1.15}
+.kick{color:var(--ok);font-weight:600;margin:0 0 4px}
+.hero{text-align:center;padding:24px 0 8px}.hero .sub{max-width:520px;margin:0 auto 16px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}.badges span{background:var(--card);border:2px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.95rem}
+.scene{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;background:linear-gradient(135deg,#FFE3D6,#DDEBFA 55%,#DDF0E6);border-radius:28px;padding:22px}.scene i{font-style:normal;font-size:clamp(2.4rem,9vw,4rem)}
+.gorow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;align-items:start}
+.sits{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.sit{font:inherit;color:var(--ink);text-align:left;display:flex;gap:12px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px 14px;cursor:pointer}
+.sit.on{border-color:var(--acc);border-width:3px}.sit b{display:block}.sit small{color:var(--mute)}.sit .ic{font-size:1.9rem}
+.note{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px 18px}.note p{margin:0;color:var(--mute)}
+.foot{max-width:980px;margin:0 auto;padding:24px 16px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;border-top:2px solid var(--line)}
+.foot div{display:flex;flex-direction:column;gap:6px}.foot a,.foot span{color:var(--mute);text-decoration:none;font-size:.95rem}.foot a:hover{color:var(--ink);text-decoration:underline}
+#list,.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;align-items:start}
+.sit:focus-visible,nav a:focus-visible,.foot a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<header class="top"><a class="logo" href="#top">🧩 Ne Yapsak?</a><nav><a href="#bul">Etkinlik Bul</a><a href="#yas">Yaşa Göre</a><a href="#durum">Durumlar</a><a href="#yazdir">Yazdırılabilir</a><a href="#hakkinda">Hakkında</a></nav><button class="btn" id="rand2" type="button">Şaşırt beni ✨</button></header>
+<main id="top">
+<section class="hero"><p class="kick">Basit fikirler. Büyük anlar.</p><h1>Birlikte yapacak<br>güzel bir şey bul</h1><p class="sub">Çocuğunuzun yaşını ve birkaç ayrıntıyı seçin, hemen başlayabileceğiniz bir etkinlik alın.</p><div class="badges"><span>✔ Hazırlıksız fikirler</span><span>♡ Ebeveyn dostu</span><span>✦ 0-10 yaş</span></div><div class="scene" aria-hidden="true"><i>🚗</i><i>🧸</i><i>🎈</i><i>🧩</i><i>🍃</i></div></section>
+<section id="bul" class="panel"><h2>Bugün ne işe yarar?</h2>
+<div class="group"><b>Yaş</b><div class="chips" data-k="age"></div></div>
+<div class="group"><b>Nerede?</b><div class="chips" data-k="place"></div></div>
+<div class="group"><b>Ne kadar süre var?</b><div class="chips" data-k="time"></div></div>
+<div class="group"><b>Elinizde ne var?</b><div class="chips" data-k="mat"></div></div>
+<div class="group"><b>Siz nasılsınız?</b><div class="chips" data-k="par"></div></div>
+<div class="gorow"><span id="cnt2" class="count"></span><button class="btn" id="show" type="button">Etkinlikleri göster ↓</button></div></section>
+<section id="yas"><p class="kick">Elle seçilmiş fikirler</p><h2 id="ttl">Tüm yaşlar için</h2>
+<div class="bar"><span class="count" id="count" aria-live="polite"></span><span><button class="btn ghost" id="reset" type="button">Temizle</button> <button class="btn" id="rand" type="button">Şaşırt beni</button></span></div>
+<div id="list"></div></section>
+<section id="durum"><p class="kick">Günün havasına göre</p><h2>Bugün nasıl geçiyor?</h2><p class="sub">Yağmurlu öğleden sonralar, bitmeyen enerji, sakin zamanlar ve arası.</p><div class="sits"></div></section>
+<section><p class="kick">Ebeveyn favorileri</p><h2>Başlamak için dört güvenli seçim</h2><div class="grid" id="fav"></div></section>
+<section id="yazdir" class="note"><h2>Yazdırılabilir kartlar</h2><p>Yakında: boyama sayfaları, görev kartları ve haftalık etkinlik planı (PDF).</p></section>
+<section id="hakkinda" class="note"><h2>Hakkında</h2><p>Ne Yapsak?, çalışan ve yoğun ebeveynlerin "şimdi çocukla ne yapsak?" sorusuna dakikalar içinde cevap bulması için hazırlandı. Etkinlikler evdeki basit malzemelerle yapılır ve çocuğun yaşına göre ayrılır. Bu sayfa çocuğunuzun adını veya kişisel verisini toplamaz.</p></section>
+</main>
+<footer class="foot"><div><b>Yaşa göre</b><a href="#yas" data-age="0">Bebek</a><a href="#yas" data-age="1">1 yaş</a><a href="#yas" data-age="2">2 yaş</a><a href="#yas" data-age="3">3 yaş</a><a href="#yas" data-age="4">4 yaş</a><a href="#yas" data-age="5">5 yaş</a><a href="#yas" data-age="6">6-7 yaş</a><a href="#yas" data-age="8">8-10 yaş</a></div>
+<div><b>Durumlar</b><a href="#durum" data-sit="yagmur">Yağmurlu gün</a><a href="#durum" data-sit="evde">Evde</a><a href="#durum" data-sit="dis">Dışarıda</a><a href="#durum" data-sit="yol">Yolculuk</a><a href="#durum" data-sit="hasta">Hasta gün</a><a href="#durum" data-sit="sakin">Sakin zaman</a><a href="#durum" data-sit="dogum">Doğum günü</a></div>
+<div><b>Özel günler (yakında)</b><span>Ramazan</span><span>Bayram</span><span>Kış</span><span>Yaz</span></div>
+<div><b>Ne Yapsak?</b><a href="#yazdir">Yazdırılabilir</a><a href="#hakkinda">Hakkında</a><span>© 2026 Ne Yapsak?</span></div></footer>
+
+<script>
+var F={
+age:[["Bebek",0],["1",1],["2",2],["3",3],["4",4],["5",5],["6-7",6],["8-10",8]],
+place:[["Evde","evde"],["Dışarıda","disarida"],["Yolda","yolda"],["Masada","masada"]],
+time:[["5-10 dk","5"],["15-30 dk","15"],["45+ dk","45"]],
+mat:[["Hiçbir şey","hic"],["Kağıt","kagit"],["Ev eşyası","ev"],["Hobi malzemesi","hobi"]],
+par:[["Birlikte oynarız","b"],["Yalnız oynayabilir","y"]]};
+var ML={hic:"Malzeme yok",kagit:"Kağıt",ev:"Ev eşyası",hobi:"Hobi malzemesi"};
+var PL={evde:"Evde",disarida:"Dışarıda",yolda:"Yolda",masada:"Masada"};
+var A=[
+{t:"Bant Yolu",a:[2,5],p:["evde"],s:"15",m:"ev",o:"b",h:"Maskeleme bandı, oyuncak arabalar.",st:["Zemine bantla kıvrımlı bir yol çizin.","Çocuk arabaları yolda sürsün.","Köprü, park yeri ve benzinlik ekleyin."],say:"Araban hangi yoldan gidiyor? Nerede duracak?",sk:"Hayal gücü, ince motor",n:"Bandı parlak veya hassas zeminlere yapıştırmayın."},
+{t:"Ben Görüyorum",a:[4,7],p:["yolda"],s:"5",m:"hic",o:"b",h:"Hazırlık gerekmez.",st:["“Ben kırmızı bir şey görüyorum” diyerek başlayın.","Çocuk tahmin etsin.","Sonra roller değişsin."],say:"İpucu vereyim: tekerleği var.",sk:"Dikkat, kelime dağarcığı"},
+{t:"Çorap Eşleştirme Yarışı",a:[2,4],p:["evde"],s:"5",m:"ev",o:"b",h:"Temiz çoraplar.",st:["Çorapları karıştırın.","Çocuk çiftleri bulsun.","Siz süreyi sayın."],say:"Bu çorabın arkadaşı nerede?",sk:"Eşleştirme, renk ve desen ayırt etme"},
+{t:"Kağıt Uçak Yarışı",a:[6,10],p:["evde","disarida"],s:"15",m:"kagit",o:"b",h:"A4 kağıtlar.",st:["İki farklı uçak katlayın.","Hangisi daha uzağa uçuyor ölçün.","Kanatları değiştirip tekrar deneyin."],say:"Neden seninki daha uzağa gitti sence?",sk:"Deney yapma, karşılaştırma",n:"Kapalı alanda yüze doğru atılmasın."},
+{t:"Yüzer mi, Batar mı?",a:[4,7],p:["masada"],s:"15",m:"ev",o:"b",h:"Su dolu büyük kap, kaşık, mantar, taş, plastik kapak, yaprak.",st:["Önce tahmin edin.","Sonra nesneyi suya bırakın.","Sonuçları kağıda yazın."],say:"Sence ne olacak? Neden?",sk:"Gözlem, tahmin",n:"Küçük parçayı ağzına alan çocuklarda yapmayın; suyun yanında yalnız bırakmayın."},
+{t:"Hikaye Zinciri",a:[6,10],p:["yolda","masada"],s:"5",m:"hic",o:"b",h:"Hazırlık gerekmez.",st:["Bir cümleyle başlayın: “Bir gün ormanda garip bir kutu bulundu…”","Çocuk hikayeyi devam ettirsin.","Sırayla ilerleyin."],say:"Sonra ne oldu?",sk:"Dil, yaratıcılık"},
+{t:"Battaniye Kalesi",a:[3,8],p:["evde"],s:"45",m:"ev",o:"y",h:"Battaniye, yastık, sandalye.",st:["Sandalyelerin üzerine battaniye serin.","İçine yastık döşeyin ve kaleye isim verin.","Çocuk içeride kitap okuyup oyuncaklarıyla oynasın."],say:"Kalenin kuralı ne olsun?",sk:"Planlama, bağımsız oyun",n:"Sandalyelerin devrilmeyeceğinden emin olun."},
+{t:"Doğa Hazine Avı",a:[3,7],p:["disarida"],s:"15",m:"kagit",o:"b",h:"Kağıt, kalem, sepet.",st:["Kağıda basit bir liste çizin: yaprak, taş, çiçek, çubuk.","Çocuk bulup sepete koysun.","Sonra bulduklarınızı yan yana dizin."],say:"Bu yaprağın şekli neye benziyor?",sk:"Gözlem, gruplama",n:"Bulunanlar ağza götürülmesin; sonra ellerinizi yıkayın."},
+{t:"Hazine Sepeti",a:[0,0],p:["evde"],s:"5",m:"ev",o:"b",h:"Sepete ahşap kaşık, temiz bez, plastik ölçü kabı, büyük halka koyun.",st:["Bebeği desteklenmiş şekilde oturtun.","Nesneleri tek tek gösterin.","Dokunmasına, sallamasına ve ağzına götürmesine izin verin."],say:"Bu yumuşak mı, sert mi?",sk:"Duyusal keşif",n:"Yutulabilecek küçük parça olmasın; bebeği asla yalnız bırakmayın."},
+{t:"Teşekkür Kartı",a:[5,10],p:["masada"],s:"15",m:"kagit",o:"y",h:"Kağıt, kalem, boya.",st:["Çocuk bir kişi seçsin: komşu, öğretmen, büyükanne.","Ona bir kart çizsin ve bir cümle yazsın.","Akşam birlikte kartı verin."],say:"Bu kişi sana ne iyilik yaptı?",sk:"Empati, duygu ifadesi"}
+];
+var BC=["#FFE3D6","#DDF0E6","#DDEBFA","#FFF0BF","#F0E1F7"];
+var EM={"Bant Yolu":"🚗","Ben Görüyorum":"👀","Çorap Eşleştirme Yarışı":"🧦","Kağıt Uçak Yarışı":"✈️","Yüzer mi, Batar mı?":"🫧","Hikaye Zinciri":"📖","Battaniye Kalesi":"🏰","Doğa Hazine Avı":"🍃","Hazine Sepeti":"🧺","Teşekkür Kartı":"💌"};
+A.forEach(function(a){a.e=EM[a.t]||"⭐"});
+var sel={},ageLbl={};
+function chips(){document.querySelectorAll(".chips").forEach(function(c){var k=c.dataset.k;F[k].forEach(function(o){var b=document.createElement("button");b.className="chip";b.type="button";b.textContent=o[0];b.setAttribute("aria-pressed","false");b.onclick=function(){sel[k]=(sel[k]===o[1])?undefined:o[1];c.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed","false")});if(sel[k]!==undefined)b.setAttribute("aria-pressed","true");render()};c.appendChild(b)})})}
+function match(a){
+ if(sel.age!==undefined&&!(sel.age>=a.a[0]&&sel.age<=a.a[1]))return false;
+ if(sel.place&&a.p.indexOf(sel.place)<0)return false;
+ if(sel.time&&a.s!==sel.time)return false;
+ if(sel.mat&&a.m!==sel.mat)return false;
+ if(sel.par==="y"&&a.o!=="y")return false;
+ if(sel.sit&&!inSit(a,sel.sit))return false;
+ return true}
+function ageTxt(a){if(a[1]===0)return"Bebek";if(a[0]===a[1])return a[0]+" yaş";return a[0]+"-"+a[1]+" yaş"}
+function card(a,open,hl){
+ var d=document.createElement("details");d.className="act"+(hl?" hl":"");if(open)d.open=true;
+ var tm={"5":"5-10 dk","15":"15-30 dk","45":"45+ dk"}[a.s];
+ d.innerHTML='<summary><div class="band"></div><div class="pad"><p class="t"></p><div class="meta"></div></div></summary><div class="body"></div>';
+ d.querySelector(".t").textContent=a.t;var bd=d.querySelector(".band");bd.textContent=a.e;bd.style.background=BC[A.indexOf(a)%BC.length];
+ var meta=d.querySelector(".meta");
+ [ageTxt(a.a),tm,a.p.map(function(x){return PL[x]}).join(" / "),ML[a.m],a.o==="y"?"Yalnız oynayabilir":"Birlikte"].forEach(function(x,i){var s=document.createElement("span");s.className="c"+i;s.textContent=x;meta.appendChild(s)});
+ var h="<p><b>Hazırlık:</b> "+esc(a.h)+"</p><p><b>Adımlar:</b></p><ol>"+a.st.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+"</ol><p class=\"say\"><b>Söyleyin:</b> "+esc(a.say)+"</p><p><b>Kazanım:</b> "+esc(a.sk)+"</p>";
+ if(a.n)h+='<p class="warn"><b>Güvenlik:</b> '+esc(a.n)+"</p>";
+ d.querySelector(".body").innerHTML=h;return d}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function render(){var r=A.filter(match),l=document.getElementById("list");l.innerHTML="";
+ document.getElementById("count").textContent=r.length+" etkinlik uygun";document.getElementById("cnt2").textContent=r.length+" etkinlik uygun ✨";var ag=F.age.filter(function(x){return x[1]===sel.age})[0];document.getElementById("ttl").textContent=ag?ag[0]+(sel.age===0?" için harika fikirler":" yaş için harika fikirler"):"Tüm yaşlar için";
+ if(!r.length){l.innerHTML='<div class="empty">Bu seçimle etkinlik yok. Bir filtreyi kaldırıp tekrar deneyin.</div>';return}
+ r.forEach(function(a){l.appendChild(card(a,false,false))})}
+document.getElementById("rand").onclick=function(){var r=A.filter(match);if(!r.length)r=A;var a=r[Math.floor(Math.random()*r.length)],l=document.getElementById("list");l.innerHTML="";document.getElementById("count").textContent="Bugünün önerisi";l.appendChild(card(a,true,true))};
+document.getElementById("reset").onclick=function(){sel={};document.querySelectorAll(".sit").forEach(function(x){x.classList.remove("on")});document.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed","false")});render()};
+var SIT=[["Yağmurlu gün","yagmur","🌧️"],["Evde","evde","🏠"],["Dışarıda","dis","🌳"],["Yolculuk","yol","🚗"],["Hasta gün","hasta","🤒"],["Sakin zaman","sakin","🌙"],["Doğum günü","dogum","🎂"]];
+var SX={yagmur:["Bant Yolu","Çorap Eşleştirme Yarışı","Yüzer mi, Batar mı?","Battaniye Kalesi","Hazine Sepeti","Teşekkür Kartı"],yol:["Ben Görüyorum","Hikaye Zinciri"],hasta:["Battaniye Kalesi","Hikaye Zinciri","Teşekkür Kartı"],sakin:["Battaniye Kalesi","Teşekkür Kartı","Hikaye Zinciri","Hazine Sepeti"],dogum:["Kağıt Uçak Yarışı","Çorap Eşleştirme Yarışı","Bant Yolu"]};
+function inSit(a,k){if(k==="evde")return a.p.indexOf("evde")>=0;if(k==="dis")return a.p.indexOf("disarida")>=0;return SX[k].indexOf(a.t)>=0}
+function go(){document.getElementById("yas").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})}
+function setSel(k,v){sel[k]=v;document.querySelectorAll('.chips[data-k="'+k+'"] .chip').forEach(function(b,i){b.setAttribute("aria-pressed",F[k][i][1]===v?"true":"false")})}
+var sw=document.querySelector(".sits");
+SIT.forEach(function(x){var b=document.createElement("button");b.type="button";b.className="sit";b.dataset.k=x[1];b.innerHTML='<span class="ic">'+x[2]+'</span><span><b>'+x[0]+'</b><small>'+A.filter(function(a){return inSit(a,x[1])}).length+' etkinlik</small></span>';b.onclick=function(){var on=sel.sit===x[1];sel.sit=on?undefined:x[1];document.querySelectorAll(".sit").forEach(function(y){y.classList.toggle("on",!on&&y===b)});render();go()};sw.appendChild(b)});
+document.querySelectorAll("[data-age]").forEach(function(l){l.onclick=function(e){e.preventDefault();setSel("age",+l.dataset.age);render();go()}});
+document.querySelectorAll("[data-sit]").forEach(function(l){l.onclick=function(e){e.preventDefault();document.querySelector('.sit[data-k="'+l.dataset.sit+'"]').click()}});
+document.getElementById("show").onclick=go;
+chips();render();
+var fav=document.getElementById("fav");["Bant Yolu","Battaniye Kalesi","Kağıt Uçak Yarışı","Doğa Hazine Avı"].forEach(function(t){fav.appendChild(card(A.filter(function(a){return a.t===t})[0],false,false))});
+document.getElementById("rand2").onclick=function(){document.getElementById("rand").click();go()};
+if("serviceWorker" in navigator){try{navigator.serviceWorker.register("sw.js").catch(function(){})}catch(e){}}
+</script>
+</body>
+</html>
